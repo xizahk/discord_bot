@@ -4,9 +4,8 @@ import requests
 import json
 
 client = discord.Client()
-token = 'MzA1MDIzODc3Nzg3MTU2NDkw.C9vLJQ.ZSq9OIP1fyVBAxiPUJWmTVw942c'
-API_KEY = '183f69ec08ef4a9d88028ffcf2f256df'
-
+token = ''
+API_KEY = ''
 
 @client.event
 async def on_ready():
