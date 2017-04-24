@@ -1,5 +1,4 @@
 import discord
-import asyncio
 import requests
 import json
 
@@ -7,28 +6,13 @@ client = discord.Client()
 token = ''
 API_KEY = ''
 
+
 @client.event
 async def on_ready():
     print('Logged in as')
     print(client.user.name)
     print(client.user.id)
     print('------')
-
-''' DELETE LATER
-@client.event
-async def on_message(message):
-    if message.content.startswith('!test'):
-        counter = 0
-        tmp = await client.send_message(message.channel, 'Calculating messages...')
-        async for log in client.logs_from(message.channel, limit=100):
-            if log.author == message.author:
-                counter += 1
-
-        await client.edit_message(tmp, 'You have {} messages.'.format(counter))
-    elif message.content.startswith('!sleep'):
-        await asyncio.sleep(5)
-        await client.send_message(message.channel, 'Done sleeping')
-'''
 
 
 def parse_command(content):
@@ -50,7 +34,7 @@ async def cmd_report(message, _):
 async def cmd_weather(message, city):
     tmp = await client.send_message(message.channel, "I'll scout ahead!")
     if not city:
-        await client.edit_message(tmp, 'Please specify a city!')
+        await client.edit_message(tmp, 'Please specify a city (or state)!')
         return
     link = 'http://api.openweathermap.org/data/2.5/weather?q=%s&APPID=%s' % (city, API_KEY)
     r = requests.get(link)
